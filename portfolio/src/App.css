@@ -1,1 +1,3 @@
 /* App-level overrides. Tailwind utilities provide most styling. */
+
+@import "tailwindcss";
