@@ -46,7 +46,7 @@ export default function Navigation() {
               className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
               <Logo className="w-10 h-10" />
-              <span className="text-xl font-bold text-gray-900">[Your Name]</span>
+              <span className="text-xl font-bold text-gray-900">Litu Rout</span>
             </button>
 
             {/* Desktop Navigation */}

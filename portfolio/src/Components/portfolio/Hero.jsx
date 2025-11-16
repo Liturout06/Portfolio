@@ -28,15 +28,15 @@ export default function Hero() {
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
                 Hi, I'm
                 <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-2">
-                  [Your Name]
+                  Litu Rout
                 </span>
               </h1>
               <p className="text-xl sm:text-2xl text-gray-600 font-light leading-relaxed">
-                [Your Role/Title]
+                Data Engineer, Data Scientist
               </p>
               <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl">
-                I create beautiful, functional digital experiences that combine elegant design 
-                with clean code. Specializing in modern web applications and user interfaces.
+                I develop resilient data ecosystems that merge robust engineering
+                with predictive and generative AI. Specializing in large-scale processing and model-driven insights.
               </p>
             </div>
 
@@ -60,7 +60,7 @@ export default function Hero() {
               <span className="text-sm text-gray-500">Connect with me:</span>
               <div className="flex gap-3">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Liturout06"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all"
@@ -68,7 +68,7 @@ export default function Hero() {
                   <Github className="h-4 w-4" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/liturout-datasci/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all"
@@ -76,7 +76,7 @@ export default function Hero() {
                   <Linkedin className="h-4 w-4" />
                 </a>
                 <a
-                  href="mailto:hello@example.com"
+                  href="mailto:liturout9@gmail.com"
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all"
                 >
                   <Mail className="h-4 w-4" />
