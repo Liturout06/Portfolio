@@ -1,5 +1,11 @@
+
 import React, { useState } from 'react';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, Loader2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { base44 } from '@/api/base44Client';
+import { toast } from 'sonner';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -7,12 +13,41 @@ export default function Contact() {
     email: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thanks for reaching out! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+    
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await base44.entities.Contact.create({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        status: 'new'
+      });
+
+      toast.success('Message sent successfully! I\'ll get back to you soon.');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      toast.error('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -65,7 +100,7 @@ export default function Contact() {
                 <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
                   Name
                 </label>
-                <input
+                <Input
                   id="name"
                   name="name"
                   type="text"
@@ -73,7 +108,8 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
-                  className="w-full h-12 rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full h-12 focus:ring-2 focus:ring-indigo-500"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -81,7 +117,7 @@ export default function Contact() {
                 <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
                   Email
                 </label>
-                <input
+                <Input
                   id="email"
                   name="email"
                   type="email"
@@ -89,7 +125,8 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="john@example.com"
-                  className="w-full h-12 rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full h-12 focus:ring-2 focus:ring-indigo-500"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -97,7 +134,7 @@ export default function Contact() {
                 <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
                   Message
                 </label>
-                <textarea
+                <Textarea
                   id="message"
                   name="message"
                   required
@@ -105,17 +142,29 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="Tell me about your project..."
                   rows={6}
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full resize-none focus:ring-2 focus:ring-indigo-500"
+                  disabled={isSubmitting}
                 />
               </div>
 
-              <button
+              <Button
                 type="submit"
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white h-12 px-8 text-sm font-medium shadow-lg hover:shadow-xl transition-all"
+                size="lg"
+                disabled={isSubmitting}
+                className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white h-12 px-8 shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
-                <Send className="ml-2 h-4 w-4" />
-              </button>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </Button>
             </form>
           </div>
 

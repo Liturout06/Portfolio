@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ArrowRight, Github, Linkedin, Mail, Download } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Hero() {
   const scrollToSection = (id) => {
@@ -28,39 +29,42 @@ export default function Hero() {
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
                 Hi, I'm
                 <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-2">
-                  Litu Rout
+                  [Your Name]
                 </span>
               </h1>
               <p className="text-xl sm:text-2xl text-gray-600 font-light leading-relaxed">
-                Data Engineer, Data Scientist
+                [Your Role/Title]
               </p>
               <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl">
-                I develop resilient data ecosystems that merge robust engineering
-                with predictive and generative AI. Specializing in large-scale processing and model-driven insights.
+                I create beautiful, functional digital experiences that combine elegant design 
+                with clean code. Specializing in modern web applications and user interfaces.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button
+              <Button
+                size="lg"
                 onClick={() => scrollToSection('projects')}
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all h-12 px-8 text-sm font-medium"
+                className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all h-12 px-8"
               >
                 View Projects
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </button>
-              <button
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
                 onClick={() => scrollToSection('contact')}
-                className="inline-flex items-center justify-center rounded-full border-2 border-gray-300 bg-white hover:bg-gray-50 h-12 px-8 text-sm font-medium text-gray-800"
+                className="border-2 border-gray-300 hover:bg-gray-50 h-12 px-8"
               >
                 Get In Touch
-              </button>
+              </Button>
             </div>
 
             <div className="flex items-center gap-4 pt-4">
               <span className="text-sm text-gray-500">Connect with me:</span>
               <div className="flex gap-3">
                 <a
-                  href="https://github.com/Liturout06"
+                  href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all"
@@ -68,7 +72,7 @@ export default function Hero() {
                   <Github className="h-4 w-4" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/liturout-datasci/"
+                  href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all"
@@ -76,7 +80,7 @@ export default function Hero() {
                   <Linkedin className="h-4 w-4" />
                 </a>
                 <a
-                  href="mailto:liturout9@gmail.com"
+                  href="mailto:hello@example.com"
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all"
                 >
                   <Mail className="h-4 w-4" />

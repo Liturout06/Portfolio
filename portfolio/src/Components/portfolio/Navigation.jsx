@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import Logo from './Logo';
 
 export default function Navigation() {
@@ -18,7 +19,14 @@ export default function Navigation() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navHeight = 80; // Height of fixed navigation
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
       setIsMobileMenuOpen(false);
     }
   };
@@ -46,7 +54,7 @@ export default function Navigation() {
               className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
               <Logo className="w-10 h-10" />
-              <span className="text-xl font-bold text-gray-900">Litu Rout</span>
+              <span className="text-xl font-bold text-gray-900">[Your Name]</span>
             </button>
 
             {/* Desktop Navigation */}
@@ -60,17 +68,20 @@ export default function Navigation() {
                   {item.label}
                 </button>
               ))}
-              <button
+              <Button
                 onClick={() => scrollToSection('contact')}
-                className="text-sm font-medium rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white h-10 px-6 shadow-sm"
+                size="sm"
+                className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white h-10 px-6 shadow-sm"
               >
                 Let's Talk
-              </button>
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              className="md:hidden inline-flex items-center justify-center rounded-full p-2 hover:bg-gray-100"
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
@@ -78,7 +89,7 @@ export default function Navigation() {
               ) : (
                 <Menu className="h-6 w-6" />
               )}
-            </button>
+            </Button>
           </div>
         </div>
       </nav>
@@ -96,12 +107,13 @@ export default function Navigation() {
                 {item.label}
               </button>
             ))}
-            <button
+            <Button
               onClick={() => scrollToSection('contact')}
-              className="mt-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white text-lg px-8 py-3"
+              size="lg"
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white"
             >
               Let's Talk
-            </button>
+            </Button>
           </div>
         </div>
       )}

@@ -1,9 +1,10 @@
-import Navigation from '../Components/portfolio/Navigation.jsx'
-import Hero from '../Components/portfolio/Hero.jsx'
-import About from '../Components/portfolio/About.jsx'
-import Projects from '../Components/portfolio/Projects.jsx'
-import Contact from '../Components/portfolio/Contact.jsx'
-import Footer from '../Components/portfolio/Footer.jsx'
+import React from 'react';
+import Navigation from '../components/portfolio/Navigation';
+import Hero from '../components/portfolio/Hero';
+import About from '../components/portfolio/About';
+import Projects from '../components/portfolio/Projects';
+import Contact from '../components/portfolio/Contact';
+import Footer from '../components/portfolio/Footer';
 
 export default function Portfolio() {
   return (

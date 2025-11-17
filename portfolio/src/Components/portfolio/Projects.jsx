@@ -1,5 +1,7 @@
 import React from 'react';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function Projects() {
   const projects = [
@@ -70,9 +72,9 @@ export default function Projects() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {projects.map((project, index) => (
-            <div
+            <Card 
               key={index}
-              className="group overflow-hidden border border-gray-200 rounded-xl bg-white hover:shadow-xl hover:border-indigo-200 transition-all duration-300"
+              className="group overflow-hidden border border-gray-200 hover:shadow-xl hover:border-indigo-200 transition-all duration-300"
             >
               {/* Project Image */}
               <div className="relative overflow-hidden bg-gray-100 h-56">
@@ -105,7 +107,7 @@ export default function Projects() {
               </div>
 
               {/* Project Content */}
-              <div className="p-6 space-y-4">
+              <CardContent className="p-6 space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
                   {project.title}
                 </h3>
@@ -124,19 +126,21 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
         {/* View More Button */}
         <div className="flex justify-center">
-          <button
-            className="inline-flex items-center justify-center rounded-full border-2 border-gray-300 bg-white hover:bg-indigo-50 hover:border-indigo-600 hover:text-indigo-600 h-12 px-8 text-sm font-medium transition-all"
+          <Button
+            variant="outline"
+            size="lg"
+            className="border-2 border-gray-300 hover:bg-indigo-50 hover:border-indigo-600 hover:text-indigo-600 h-12 px-8 transition-all"
           >
             View All Projects
             <ArrowRight className="ml-2 h-4 w-4" />
-          </button>
+          </Button>
         </div>
       </div>
     </section>
